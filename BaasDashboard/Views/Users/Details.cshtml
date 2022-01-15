@@ -1,0 +1,27 @@
+﻿@model BaasDashboard.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>User: @Html.DisplayFor(model => model.Name) </h1>
+<div class="row">
+    <div class="col-4">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Heart rate</th>
+      <th scope="col">Steps</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@Html.DisplayFor(model => model.HeartRate)</td>
+      <td>@Html.DisplayFor(model => model.Steps)</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</div>    
+
