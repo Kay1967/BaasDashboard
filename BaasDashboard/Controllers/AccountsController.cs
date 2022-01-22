@@ -116,8 +116,12 @@ namespace BaasDashboard.Controllers
             }
             return View(login);
         }*/
+        public async Task<IActionResult> Register()
+        {
+            return View();
+        }
         [HttpPost]
-        public async Task<IActionResult> CreateAccount(Register register)
+        public async Task<IActionResult> Register(Register register)
         {
             var account = _context.Accounts.FirstOrDefault(s => s.Email == register.Email);
             if (account == null)
