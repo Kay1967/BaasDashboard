@@ -6,22 +6,37 @@
 
 <h1>User: @Html.DisplayFor(model => model.Name) </h1>
 <div class="row">
-    <div class="col-4">
+    <div class="col-8">
         <table class="table">
   <thead>
     <tr>
       <th scope="col">Heart rate</th>
-      <th scope="col">Steps</th>
-      
+      <th scope="col">Steps (meters)</th>
+      <th scope="col">Sleep (hour)</th>
+      <th scope="col">Stress (%)</th>
+      <th scope="col">Inhabitability (address)</th>      
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>@Html.DisplayFor(model => model.HeartRate)</td>
+      <td>@Html.DisplayFor(model => model.HeartRate) </td>
       <td>@Html.DisplayFor(model => model.Steps)</td>
+      <td>@Html.DisplayFor(model => model.Sleep)</td>
+      <td>@Html.DisplayFor(model => model.Stress)</td>
+      <td>@Html.DisplayFor(model => model.Inhabitability)</td>
     </tr>
+  
   </tbody>
+
 </table>
     </div>
-</div>    
+</div>   
+<div>
+    <button>
+       <a asp-action="Index" class="text-dark">Back</a>
+    </button>
+    
+</div>
+
+
 

@@ -1,21 +1,46 @@
 ﻿using BaasDashboard.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using BaasDashboard.Data;
+
 
 namespace BaasDashboard.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+       // {
+           // _logger = logger;
+        //}    
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+
+            _context = context;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+        
+        public async Task<ActionResult> UserLogin(Login login)
+        {
+            var account = _context.Accounts.FirstOrDefault(n => n.Email == login.Email);
+            if (account == null)
+            {
+                return BadRequest();
+            }
+            if(account.Password == login.Password)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         public IActionResult Privacy()

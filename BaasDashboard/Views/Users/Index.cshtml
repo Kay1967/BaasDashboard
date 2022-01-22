@@ -17,7 +17,7 @@
                    with font-awesome or any other icon font library -->
               <li class="nav-item menu-open">
                 <a asp-controller="Users" asp-action="Details" asp-route-id="@user.Id" class="nav-link active">
-                 <img src="@Html.DisplayFor(u => user.ImgPath)" height="20" width="20"/>
+                 <img src="@Html.DisplayFor(u => user.ImgPath)" height="30" width="30"/>
                   <p>
                     &nbsp;
                     @Html.DisplayFor(u => user.Name)
@@ -35,7 +35,6 @@
 
     <hr />
 <p>
-    <a asp-action="Create">Add User</a>
-</p>
+    
 
 
