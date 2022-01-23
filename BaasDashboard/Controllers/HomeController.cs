@@ -25,8 +25,8 @@ namespace BaasDashboard.Controllers
         {
             return View();
         }
-        
-        public async Task<ActionResult> UserLogin(Login login)
+        [HttpPost]
+        public async Task<ActionResult> Index(Login login)
         {
             var account = _context.Accounts.FirstOrDefault(n => n.Email == login.Email);
             if (account == null)
@@ -35,11 +35,11 @@ namespace BaasDashboard.Controllers
             }
             if(account.Password == login.Password)
             {
-                return Ok();
+                return RedirectToAction("Index", "Users", account.Id);
             }
             else
             {
-                return NotFound();
+                return View();
             }
         }
 

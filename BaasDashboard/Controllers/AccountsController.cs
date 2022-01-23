@@ -124,20 +124,21 @@ namespace BaasDashboard.Controllers
         public async Task<IActionResult> Register(Register register)
         {
             var account = _context.Accounts.FirstOrDefault(s => s.Email == register.Email);
-            if (account == null)
+            if (account != null)
             {
                 return BadRequest();
             }
 
 
-            var newAccount = new Account();
+            var newAccount = new Account()
             {
-                newAccount.Email = register.Email;
-                newAccount.Password = register.Password;
-            }
+                Name = register.Name,
+                Email = register.Email,
+                Password = register.Password
+            };
             _context.Accounts.Add(newAccount);
             _context.SaveChanges();
-            return Ok();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Accounts/Delete/5
